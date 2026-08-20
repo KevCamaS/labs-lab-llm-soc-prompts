@@ -1,0 +1,68 @@
+[
+  {
+    "case_id": "IA-01",
+    "expected": {
+      "mitre_contiene": "T1110",
+      "escalar": "si",
+      "falso_positivo": "no"
+    },
+    "api_payload": {
+      "model": "gpt-4o-mini",
+      "temperature": 0,
+      "messages": [
+        {
+          "role": "system",
+          "content": "Eres analista SOC Tier 1. Analiza la alerta.\n\nDevuelve exactamente estas líneas:\nRESUMEN:\nSEVERIDAD: baja|media|alta|critica\nMITRE:\nIOCS:\nFALSO_POSITIVO: si|no\nESCALAR: si|no\nPASOS:\n\nNo inventes IPs, usuarios ni fechas. Si falta un dato, escribe \"no consta\".\n"
+        },
+        {
+          "role": "user",
+          "content": "Wazuh 5710 level 10. Host web-01. 6 failed SSH from 203.0.113.50 user root."
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "IA-02",
+    "expected": {
+      "mitre_contiene": "T1078",
+      "escalar": "no",
+      "falso_positivo": "si"
+    },
+    "api_payload": {
+      "model": "gpt-4o-mini",
+      "temperature": 0,
+      "messages": [
+        {
+          "role": "system",
+          "content": "Eres analista SOC Tier 1. Analiza la alerta.\n\nDevuelve exactamente estas líneas:\nRESUMEN:\nSEVERIDAD: baja|media|alta|critica\nMITRE:\nIOCS:\nFALSO_POSITIVO: si|no\nESCALAR: si|no\nPASOS:\n\nNo inventes IPs, usuarios ni fechas. Si falta un dato, escribe \"no consta\".\n"
+        },
+        {
+          "role": "user",
+          "content": "Accepted publickey for deploy from 198.51.100.10 on web-01 (change window authorized)."
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "IA-03",
+    "expected": {
+      "mitre_contiene": "T1110",
+      "escalar": "si",
+      "falso_positivo": "no"
+    },
+    "api_payload": {
+      "model": "gpt-4o-mini",
+      "temperature": 0,
+      "messages": [
+        {
+          "role": "system",
+          "content": "Eres analista SOC Tier 1. Analiza la alerta.\n\nDevuelve exactamente estas líneas:\nRESUMEN:\nSEVERIDAD: baja|media|alta|critica\nMITRE:\nIOCS:\nFALSO_POSITIVO: si|no\nESCALAR: si|no\nPASOS:\n\nNo inventes IPs, usuarios ni fechas. Si falta un dato, escribe \"no consta\".\n"
+        },
+        {
+          "role": "user",
+          "content": "Windows Event 4625 x4 for administrator from 203.0.113.88 Logon Type 10 at 03:14."
+        }
+      ]
+    }
+  }
+]

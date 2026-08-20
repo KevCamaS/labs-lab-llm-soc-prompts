@@ -1,0 +1,31 @@
+{
+  "casos": [
+    {
+      "id": "IA-01",
+      "alerta": "Wazuh 5710 level 10. Host web-01. 6 failed SSH from 203.0.113.50 user root.",
+      "esperado": {
+        "mitre_contiene": "T1110",
+        "escalar": "si",
+        "falso_positivo": "no"
+      }
+    },
+    {
+      "id": "IA-02",
+      "alerta": "Accepted publickey for deploy from 198.51.100.10 on web-01 (change window authorized).",
+      "esperado": {
+        "mitre_contiene": "T1078",
+        "escalar": "no",
+        "falso_positivo": "si"
+      }
+    },
+    {
+      "id": "IA-03",
+      "alerta": "Windows Event 4625 x4 for administrator from 203.0.113.88 Logon Type 10 at 03:14.",
+      "esperado": {
+        "mitre_contiene": "T1110",
+        "escalar": "si",
+        "falso_positivo": "no"
+      }
+    }
+  ]
+}
