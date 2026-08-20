@@ -1,16 +1,22 @@
-# Lab SOC & IA — Prompts LLM y casos de prueba del agente
+# Lab — Prompts LLM para SOC y prueba del agente
 
-Laboratorio básico de **IA aplicada a SOC**: diseñar prompts, pasar alertas de prueba y **validar** que el agente no alucine (casos PASS/FAIL).
+El puesto habla de diseñar prompts y validar un agente de IA con alertas. Antes de “confiar” en un modelo, quise fijar reglas claras:
 
-No necesita API de pago. Puedes pegar el prompt en ChatGPT/Claude **sin datos reales de clientes**.
+1. El modelo **no inventa** IPs ni usuarios.
+2. Siempre pide MITRE, IoCs, falso positivo y si escala.
+3. Tengo casos PASS/FAIL para revisar la respuesta.
 
-## Qué cubre del puesto
-- Diseñar y probar prompts para análisis de alertas
-- Casos de prueba del agente de IA
-- Integración conceptual con APIs de LLMs (`scripts/formato_api.py` arma el JSON del request)
+## Cómo lo uso
+1. Tomo el system prompt en `prompts/system_soc_t1.txt`.
+2. Paso una alerta de `datos/casos_alerta.json`.
+3. Comparo con lo esperado (ej. brute force SSH → T1110 + escalar).
 
-## Cómo ejecutar
 ```bash
 python scripts/formato_api.py
 ```
-Genera `resultados/llm_requests.json` listo para enviar a una API (OpenAI-compatible) cuando tengas clave.
+Arma `resultados/llm_requests.json` (formato tipo API OpenAI). Puedo pegar el mismo prompt en un chat sin datos de clientes reales.
+
+## Por qué no es “magia”
+La IA ayuda a resumir; el analista T1 decide. Si el modelo alucina, el caso falla. Eso es lo que quería practicar para Kriptome / Aynitech.
+
+Kevin Cama — github.com/KevCamaS
